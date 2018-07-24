@@ -133,7 +133,7 @@ string BigNumber::toString() {
 
     // 如果数字为 0 直接返回
     bool is_zero = true;
-    for (int i = 0; i != 6; ++i) {
+    for (unsigned i = 0; i != s; ++i) {
         if (rev[i] != 0) {
             is_zero = false;
             break;
