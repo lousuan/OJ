@@ -70,6 +70,7 @@ BigNumber operator*(const BigNumber &a, const BigNumber &b);
 BigNumber pow(const BigNumber &base, unsigned exponent);
 
 int main() {
+    std::ios::sync_with_stdio(false);
     string string_base;
     int times;
     while (cin >> string_base >> times) {
