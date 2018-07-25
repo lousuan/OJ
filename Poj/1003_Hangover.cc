@@ -74,6 +74,4 @@ int main() {
             cout << binarySearch(length, 0, 299) << " card(s)" << endl;
         }
     }
-
-
 }
