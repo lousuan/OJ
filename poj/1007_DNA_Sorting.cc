@@ -52,6 +52,7 @@ using std::cin;
 using std::cout;
 using std::endl;
 using std::istream;
+using std::ostream;
 using std::sort;
 using std::string;
 using std::vector;
@@ -76,25 +77,22 @@ void DNA::calculateSortedness() {
     for (int i = 0; i != s; ++i) {
         switch (sequence[i])
         {
-            case 'a':
-                ++t;
-                ++g;
-                ++c;
+            case 'A':
+                unsortedness += c + g + t;
                 ++a;
                 break;
 
-            case 'c':
-                ++t;
-                ++g;
+            case 'C':
+                unsortedness += g + t;
                 ++c;
                 break;
 
-            case 'g':
-                ++t;
+            case 'G':
+                unsortedness += t;
                 ++g;
                 break;
 
-            case 't':
+            case 'T':
                 ++t;
                 break;
 
@@ -102,8 +100,6 @@ void DNA::calculateSortedness() {
                 break;
         }
     }
-    unsortedness = a + c + g + t;
-    return;
 }
 
 bool DNA::operator< (const DNA & b) {
@@ -114,7 +110,7 @@ bool DNA::operator< (const DNA & b) {
     }
 }
 
-istream & operator>>(istream & is, DNA & dna) {
+istream & operator>> (istream & is, DNA & dna) {
     is >> dna.sequence;
     if (is) {
         dna.calculateSortedness();
@@ -125,15 +121,20 @@ istream & operator>>(istream & is, DNA & dna) {
     return is;
 }
 
+ostream &operator<< (ostream &os, const DNA &dna) {
+    os << dna.sequence;  // << ' ' << dna.unsortedness;
+    return os;
+}
+
 int main() {
     std::ios::sync_with_stdio(false);
     int length;
     int m;
     DNA dna;
     vector<DNA> DNAs;
-    DNAs.resize(m);
     cin >> length >> m;
-
+    DNAs.resize(m);
+    
     for (int i = 0; i != m; ++i) {
         cin >> DNAs[i];
     }
@@ -141,6 +142,8 @@ int main() {
     sort(DNAs.begin(), DNAs.end());
 
     for (int i = 0; i != m; ++i) {
-        cout << DNAs[i].sequence << endl;
+        cout << DNAs[i] << endl;
     }
+
+    return 0;
 }
