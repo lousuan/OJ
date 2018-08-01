@@ -121,7 +121,7 @@ istream & operator>> (istream & is, DNA & dna) {
     return is;
 }
 
-ostream &operator<< (ostream &os, const DNA &dna) {
+ostream &operator<< (ostream & os, const DNA & dna) {
     os << dna.sequence;  // << ' ' << dna.unsortedness;
     return os;
 }
