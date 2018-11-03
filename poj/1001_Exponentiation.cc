@@ -58,7 +58,7 @@ public:
     unsigned rev_dot;
 
     BigNumber();
-    BigNumber(const string & num);
+    BigNumber(const string &num);
     BigNumber(const unsigned length, const unsigned d);
     BigNumber(const BigNumber &original);
     BigNumber &operator=(const BigNumber &original); 
@@ -80,7 +80,7 @@ int main() {
     return 0;
 }
 
-BigNumber::BigNumber(const string & number) {
+BigNumber::BigNumber(const string &number) {
     rev.resize(6, 0);
     rev_dot = 0;
     int j = 0;
