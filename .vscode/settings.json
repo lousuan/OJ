@@ -65,6 +65,10 @@
         "string": "cpp",
         "unordered_map": "cpp",
         "map": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "cstdarg": "cpp",
+        "list": "cpp",
+        "numeric": "cpp",
+        "cinttypes": "cpp"
     } // 效果稍好，但太卡，故关掉
 }

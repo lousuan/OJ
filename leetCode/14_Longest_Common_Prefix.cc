@@ -1,6 +1,12 @@
+#include <algorithm>
 #include <iostream>
+#include <limits>
 #include <vector>
 
+using std::cout;
+using std::endl;
+using std::min;
+using std::numeric_limits;
 using std::string;
 using std::vector;
 
@@ -15,11 +21,19 @@ public:
         }
         int prefix = 0;
         bool match = true;
-        for (; prefix != strs[0][prefix]; ++prefix) {
-            const int loop = strs.size();
-            for (int i = 0; i != loop; ++i) {
+        unsigned min_length = numeric_limits<unsigned>::max();
+        const int num_of_string = strs.size();
+        for (const auto& s : strs) {
+            min_length = min(min_length, (unsigned)s.length());
+        }
+
+        cout << min_length << endl;
+
+        for (; prefix != min_length; ++prefix) {
+            for (int i = 1; i != num_of_string; ++i) {
                 if (strs[0][prefix] != strs[i][prefix]) {
                     match = false;
+                    --prefix;
                     break;
                 }
             }
@@ -27,9 +41,18 @@ public:
                 break;
             }
         }
-        if (prefix > 0) {
+
+        cout << prefix << endl;
+
+        if (prefix >= 0) {
             return strs[0].substr(0, prefix);
         }
         return "";
     }
 };
+
+int main() {
+    Solution s;
+    vector<string> strs = {"flaaa", "fla", "fl"};
+    cout << s.longestCommonPrefix(strs);
+}
