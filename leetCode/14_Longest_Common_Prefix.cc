@@ -42,10 +42,14 @@ public:
             }
         }
 
+        if (match) {
+            --prefix;
+        }
+
         cout << prefix << endl;
 
         if (prefix >= 0) {
-            return strs[0].substr(0, prefix);
+            return strs[0].substr(0, prefix + 1);
         }
         return "";
     }
