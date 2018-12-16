@@ -23,7 +23,8 @@ private:
     vector<vector<int>> results;
     void kSum(vector<int>::iterator left, vector<int>::iterator right,
               int target, int k) {
-        if ((right - left + 1) < k) {
+        if (((right - left + 1) < k) || (target < k * (*left)) ||
+            (target > k * (*right))) {
             return;
         }
         if (k > 2) {
